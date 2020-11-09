@@ -1,0 +1,26 @@
+plugins {
+    id 'java-library'
+}
+
+group 'org.qa'
+version '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+
+    implementation (group: 'mysql', name: 'mysql-connector-java', version: '8.0.22')
+    implementation group: 'org.mybatis', name: 'mybatis', version: '3.5.6'
+
+    testCompile group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.7.0'
+}
+
+test{
+    useJUnitPlatform()
+    ignoreFailures true
+    doLast {
+        "cmd /C start $buildDir/reports/tests/test/index.html".execute()
+    }
+}
